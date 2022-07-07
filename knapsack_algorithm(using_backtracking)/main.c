@@ -1,15 +1,18 @@
 #include <stdio.h>
 #include <stdbool.h>
-// twt : total weight
+int t [4][52];           // Memoziation technique
+insert(-1 , t ,sizeof(t)); // Intilization to -1
 
 int max(int a , int b ) { return (a>b) ? a:b;}
 int knapsack(int value[] , int weight[] , int twt , int siz){
     if(siz==0 || twt==0)
         return 0;
+     if(t[n][twt]!=-1)
+       return t[n][twt];
     if(weight[siz-1]<=twt)
-        return max(value[siz-1]+knapsack(value , weight , twt-weight[siz-1] ,siz - 1) , knapsack(value , weight , twt ,siz - 1)); 
+        return t[n][twt] = max(value[siz-1]+knapsack(value , weight , twt-weight[siz-1] ,siz - 1) , knapsack(value , weight , twt ,siz - 1)); 
     else 
-        return knapsack(value , weight , twt ,siz - 1);
+        return t[n][twt] = knapsack(value , weight , twt ,siz - 1);
 }
 int main() {
     int value[] = {60,100,120};
